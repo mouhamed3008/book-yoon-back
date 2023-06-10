@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Reservations extends Model
 {
@@ -36,13 +36,13 @@ class Reservations extends Model
         'DateParcours' => 'datetime',
     ];
 
-    public function passengers(): HasMany
+    public function passenger(): BelongsTo
     {
-        return $this->hasMany(User::class);
+        return $this->BelongsTo(User::class);
     }
 
-    public function conducteurs(): HasMany
+    public function conducteur(): BelongsTo
     {
-        return $this->hasMany(User::class);
+        return $this->BelongsTo(User::class);
     }
 }

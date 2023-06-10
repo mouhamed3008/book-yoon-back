@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Roles;
 use Laravel\Sanctum\HasApiTokens;
 use App\Providers\RoleServiceProvider;
 use Illuminate\Notifications\Notifiable;
@@ -57,9 +58,15 @@ class User extends Authenticatable
 
     public function role(): BelongsTo
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(Roles::class);
     }
 
+
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservations::class);
+    }
 
 
     public static function isAdmin($user): bool

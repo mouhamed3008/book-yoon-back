@@ -19,13 +19,15 @@ class ReservationsController extends Controller
         $user = auth()->user();
         $reservations = null;
 
+
         if (User::isAdmin($user) || User::isSuperAdmin($user)) {
             $reservations = new ReservationCollection(Reservations::all());
         }elseif (User::isConducteur($user)) {
-            $reservations = new ReservationCollection(Reservations::where('conducteur_id',$user->id));
+            $reservations = new ReservationCollection(Reservations::where('conducteur_id',$user->id)->get());
         }else{
-            $reservations = new ReservationCollection(Reservations::where('passager_id',$user->id));
+            $reservations = new ReservationCollection(Reservations::where('passager_id',$user->id)->get());
         }
+
 
         return $reservations;
 
