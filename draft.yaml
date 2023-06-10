@@ -1,0 +1,25 @@
+models:
+  # ...
+  Roles:
+    libelle: string:255
+    is_active: boolean default:1
+  Reservations:
+    depart: string:255
+    destination: string:255
+    DateParcours: datetime
+    heureParcours: string:255
+    prixPayment: integer
+    itineraires: string
+    relationships:
+      hasMany: User, User
+
+controllers:
+  # ...
+
+  Reservations:
+    resource: api.store, api.show, api.index, api.destroy, api.update
+
+  Users:
+    resource: api.store, api.show, api.index, api.destroy, api.update
+
+
