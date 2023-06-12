@@ -25,7 +25,7 @@ class UserStoreRequest extends FormRequest
             'password' => 'required|confirmed|min:6',
             'date_naissance'  => ['required','string'],
             'adresse'  => ['required','string'],
-            'telephone'  => ['required','string'],
+            'telephone'  => ['required' , 'regex:/^([0-9\s\-\+\(\)]*)$/'],
             'photo_profil'  => ['sometimes','string'],
             'numero_permis'  => ['string'],
             'numero_voiture'  => ['string'],
