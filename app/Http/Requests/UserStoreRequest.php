@@ -21,14 +21,14 @@ class UserStoreRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:191'],
-            'email' => ['required', 'email', 'max:191'],
+            'email' =>'required|string|unique:users',
             'password' => 'required|confirmed|min:6',
             'date_naissance'  => ['required','string'],
             'adresse'  => ['required','string'],
-            'telephone'  => ['required' , 'regex:/^([0-9\s\-\+\(\)]*)$/'],
+            'telephone'  =>'required|string|unique:users',
             'photo_profil'  => ['sometimes','string'],
-            'numero_permis'  => ['string'],
-            'numero_voiture'  => ['string'],
+            'numero_permis'  => 'string|unique:users',
+            'numero_voiture'  => 'string|unique:users',
             'couleur_voiture'  => ['string'],
             'photo_permis'  => ['string'],
         ];

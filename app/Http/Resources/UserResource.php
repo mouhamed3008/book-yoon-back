@@ -21,12 +21,13 @@ class UserResource extends JsonResource
             'date_naissance' => $this->date_naissance,
             'telephone' => $this->telephone,
             'is_active' => $this->is_active,
+            'is_available' => $this->is_available,
             'numero_permis' => $this->numero_permis,
             'numero_voiture' => $this->numero_voiture,
             'couleur_voiture' => $this->couleur_voiture,
             'photo_profil' => base64_encode($this->photo) != null ?  base64_encode($this->photo) : null,
             'photo_permis' => base64_encode($this->photo) != null ?  base64_encode($this->photo) : null,
-            // 'role' =>  RoleResource::make($this->role_id),
+            'role' =>  RoleResource::make($this->role),
 
         ];
     }

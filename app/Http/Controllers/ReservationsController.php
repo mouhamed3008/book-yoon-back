@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ReservationStoreRequest;
-use App\Http\Requests\ReservationUpdateRequest;
-use App\Http\Resources\ReservationCollection;
-use App\Http\Resources\ReservationResource;
+use App\Models\User;
 use App\Models\Reservation;
 use App\Models\Reservations;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Http\Resources\ReservationResource;
+use App\Http\Resources\ReservationCollection;
+use App\Http\Requests\ReservationStoreRequest;
+use App\Http\Requests\ReservationUpdateRequest;
+use App\Http\Resources\ReservationsConducteurCollection;
 
 class ReservationsController extends Controller
 {
@@ -23,7 +24,7 @@ class ReservationsController extends Controller
         if (User::isAdmin($user) || User::isSuperAdmin($user)) {
             $reservations = new ReservationCollection(Reservations::all());
         }elseif (User::isConducteur($user)) {
-            $reservations = new ReservationCollection(Reservations::where('conducteur_id',$user->id)->get());
+            $reservations = new ReservationsConducteurCollection(Reservations::where('conducteur_id',$user->id)->get());
         }else{
             $reservations = new ReservationCollection(Reservations::where('passager_id',$user->id)->get());
         }

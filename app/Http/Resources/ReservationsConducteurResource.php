@@ -5,10 +5,12 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ReservationResource extends JsonResource
+class ReservationsConducteurResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
+     *
+     * @return array<string, mixed>
      */
     public function toArray(Request $request): array
     {
@@ -20,7 +22,7 @@ class ReservationResource extends JsonResource
             'heureParcours' => $this->heureParcours,
             'prixPayment' => $this->prixPayment,
             'itineraires' => $this->itineraires,
-            'conducteur_id' => UserResource::make($this->conducteur),
-        ];
+            'passager_id' => UserResource::make($this->passager),
+        ];;
     }
 }

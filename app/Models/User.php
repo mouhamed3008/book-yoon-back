@@ -33,6 +33,8 @@ class User extends Authenticatable
         'couleur_voiture',
         'role_id',
         'photo_permis',
+        'is_active',
+        'is_available',
     ];
 
     /**
