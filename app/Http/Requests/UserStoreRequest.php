@@ -22,7 +22,7 @@ class UserStoreRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:191'],
             'email' => ['required', 'email', 'max:191'],
-            'password' => ['nullable','string'],
+            'password' => 'required|confirmed|min:6',
             'date_naissance'  => ['required','string'],
             'adresse'  => ['required','string'],
             'telephone'  => ['required','string'],

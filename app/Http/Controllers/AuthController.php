@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Resources\UserResource;
+use App\Models\Roles;
 
 class AuthController extends Controller
 {
@@ -15,7 +16,8 @@ class AuthController extends Controller
     public function register(UserStoreRequest $request) {
 
 
-        $user = User::create($request->validated());
+        $role = Roles::where('libelle', $request->role);
+        $user = User::create(array_merge($request->validated(),[ 'role_id'=>$role->id]));
         $token = $user->createToken('myapptoken')->plainTextToken;
         $response = [
             'user' => new UserResource( $user),
