@@ -30,6 +30,7 @@ class UserStoreRequest extends FormRequest
             'numero_permis'  => ['nullable','string'],
             'numero_voiture'  => ['nullable','string'],
             'couleur_voiture'  => ['nullable','string'],
+            'photo_permis'  => ['nullable','string'],
             'role'  => ['required','string'],
         ];
     }
