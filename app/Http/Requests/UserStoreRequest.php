@@ -26,12 +26,11 @@ class UserStoreRequest extends FormRequest
             'date_naissance'  => ['required','string'],
             'adresse'  => ['required','string'],
             'telephone'  => ['required','string'],
-            'photo_profil'  => ['sometimes','string','nullabe'],
-            'numero_permis'  => ['nullable','string'],
-            'numero_voiture'  => ['nullable','string'],
-            'couleur_voiture'  => ['nullable','string'],
-            'photo_permis'  => ['nullable','string'],
-            'role'  => ['required','string'],
+            'photo_profil'  => ['sometimes','string'],
+            'numero_permis'  => ['string'],
+            'numero_voiture'  => ['string'],
+            'couleur_voiture'  => ['string'],
+            'photo_permis'  => ['string'],
         ];
     }
 }

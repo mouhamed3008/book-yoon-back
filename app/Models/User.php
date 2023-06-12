@@ -31,7 +31,7 @@ class User extends Authenticatable
         'numero_permis',
         'numero_voiture',
         'couleur_voiture',
-        'role',
+        'role_id',
         'photo_permis',
     ];
 

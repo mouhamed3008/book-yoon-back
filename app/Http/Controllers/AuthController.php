@@ -16,8 +16,9 @@ class AuthController extends Controller
     public function register(UserStoreRequest $request) {
 
 
-        $role = Roles::where('libelle', $request->role);
-        $user = User::create(array_merge($request->validated(),[ 'role_id'=>$role->id]));
+        $role = Roles::where('libelle', $request->role)->first();
+        $tab = array_merge($request->validated(),[ 'role_id'=>$role->id]);
+        $user = User::create($tab);
         $token = $user->createToken('myapptoken')->plainTextToken;
         $response = [
             'user' => new UserResource( $user),
