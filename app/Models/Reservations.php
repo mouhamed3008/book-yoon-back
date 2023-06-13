@@ -23,7 +23,9 @@ class Reservations extends Model
         'prixPayment',
         'itineraires',
         'passager_id',
-        'conducteur_id'
+        'conducteur_id',
+        'is_route_nat',
+        'payerPar',
     ];
 
     /**

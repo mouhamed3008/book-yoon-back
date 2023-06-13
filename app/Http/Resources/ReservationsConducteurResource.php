@@ -22,6 +22,8 @@ class ReservationsConducteurResource extends JsonResource
             'heureParcours' => $this->heureParcours,
             'prixPayment' => $this->prixPayment,
             'itineraires' => $this->itineraires,
+            'is_route_nat' => $this->is_route_nat,
+            'payerPar' => $this->payerPar,
             'passager_id' => UserResource::make($this->passager),
         ];;
     }

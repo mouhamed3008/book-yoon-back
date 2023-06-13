@@ -27,6 +27,7 @@ class ReservationStoreRequest extends FormRequest
             'prixPayment' => ['required', 'integer'],
             'itineraires' => ['required', 'string'],
             'conducteur_id' => ['required'],
+            'payerPar' => ['required'],
         ];
     }
 }

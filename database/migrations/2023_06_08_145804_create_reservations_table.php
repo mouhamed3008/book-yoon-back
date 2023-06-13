@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('prixPayment');
             $table->string('itineraires');
             $table->boolean('is_active')->default(1);
+            $table->boolean('is_route_nat')->default(1);
+            $table->boolean('payerPar')->nullable();
             $table->foreignId('passager_id')->nullable()->constrained('users');
             $table->foreignId('conducteur_id')->nullable()->constrained('users');
             $table->timestamps();
