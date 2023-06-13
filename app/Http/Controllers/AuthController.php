@@ -18,6 +18,11 @@ class AuthController extends Controller
 
 
         $role = Roles::where('libelle', $request->role)->first();
+        if ($role  === null) {
+            return response()->json([
+                'message' => 'Le role n\'existe pas',
+            ], 404);
+        }
         $profilPic = $this->getImageResize($request);
         $permisPic = $this->getImageResize($request);
 
