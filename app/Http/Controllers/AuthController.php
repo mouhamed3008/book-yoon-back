@@ -9,12 +9,16 @@ use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
-use App\Http\Requests\UserStoreRequest;
 
 class AuthController extends Controller
 {
 
-    public function register(UserStoreRequest $request) {
+    public function register(Request $request) {
+
+        $fields = $request->validate([
+            'telephone' => 'required|string|unique:users',
+            'password' => 'required|string'
+        ]);
 
 
         $role = Roles::where('libelle', $request->role)->first();
@@ -27,7 +31,7 @@ class AuthController extends Controller
         $permisPic = $this->getImageResize($request);
 
 
-        $tab = array_merge($request->validated(),[ 'role_id'=>$role->id]);
+        $tab = array_merge($request->all(),[ 'role_id'=>$role->id]);
         $tab['photo_profil'] = count($profilPic) > 0 ? $profilPic['photo_profil'] : null;
         $tab['photo_permis'] = count($permisPic) > 0 ? $permisPic['photo_permis'] : null;
 
@@ -53,7 +57,7 @@ class AuthController extends Controller
         // Check password
         if(!$user || !Hash::check($fields['password'], $user->password)) {
             return response([
-                'message' => 'Bad creds'
+                'message' => 'Login ou Mot de Passe incorrect'
             ], 401);
         }
 
