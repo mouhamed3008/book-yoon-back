@@ -11,7 +11,7 @@ use App\Http\Resources\UserResource;
 use App\Http\Resources\UserCollection;
 
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     public function index(Request $request)
     {
