@@ -20,8 +20,8 @@ class ReservationStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'depart' => ['required', 'string', 'max:255'],
-            'destination' => ['required', 'string', 'max:255'],
+            'depart' => ['required', 'max:255'],
+            'destination' => ['required', 'max:255'],
             'DateParcours' => ['required'],
             'heureParcours' => ['required', 'string', 'max:255'],
             'prixPayment' => ['required', 'integer'],

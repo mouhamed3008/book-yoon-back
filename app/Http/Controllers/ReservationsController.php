@@ -38,8 +38,7 @@ class ReservationsController extends Controller
     public function store(ReservationStoreRequest $request)
     {
         $user = auth()->user();
-
-        $reservation = Reservations::create(array_merge($request->validated(), ['passager_id' => $user->id]));
+        $reservation = Reservations::create(array_merge($request->validated(), ['passager_id' => $user->id,"depart"=>json_encode($request->depart),"destination"=>json_encode($request->destination)]));
 
         return new ReservationResource($reservation);
     }
